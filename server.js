@@ -1,3 +1,5 @@
+require('dotenv').config();
+const mysql = require('mysql2');
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -13,6 +15,24 @@ app.use('/api/produtos', produtoRoutes);
 app.use('/api/pedidos', pedidoRoutes);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Conexão à base de dados com variáveis de ambiente
+const connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+  })
+  
+  // Testar se conecta
+connection.connect((err) => {
+    if (err) {
+      console.error('Erro na conexão:', err);
+    } else {
+      console.log('Conectado ao MySQL com sucesso!');
+    }
+  });
+  
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
 
