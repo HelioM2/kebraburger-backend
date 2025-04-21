@@ -13,7 +13,7 @@
 // });
 
 // module.exports = connection;
-
+require('dotenv').config();
 const mysql = require('mysql2');
 
 // Usando variáveis de ambiente para se conectar ao banco de dados
