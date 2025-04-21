@@ -11,7 +11,6 @@
 //   if (err) throw err;
 //   console.log('Conectado ao MySQL!');
 // });
-
 // module.exports = connection;
 require('dotenv').config();
 const mysql = require('mysql2');
@@ -23,7 +22,7 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASSWORD, // Sua senha
   database: process.env.DB_NAME, // 'kebra_burger'
   port: process.env.DB_PORT, // Certifique-se de incluir a porta
-  connectTimeout: 30000 // Aumentando o tempo de espera para  conexão
+  connectTimeout: 30000 // Aumentando o tempo de espera para conexão
 });
 
 // Conectar ao banco de dados
