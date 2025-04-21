@@ -44,17 +44,7 @@ setInterval(() => {
     }
   });
 }, 300000); // 5 minutos
-
-app.get('/testdb', (req, res) => {
-  connection.query('SELECT 1 + 1 AS result', (err, results) => {
-    if (err) {
-      console.error('Erro ao conectar ao banco:', err);
-      res.status(500).send('Erro na conexão com o banco de dados.');
-    } else {
-      res.send(`Conexão bem-sucedida! Resultado: ${results[0].result}`);
-    }
-  });
-});
+ 
 
 const PORT = process.env.PORT || 3000;
 //const PORT = 3000;
