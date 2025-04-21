@@ -22,6 +22,7 @@ const connection = mysql.createConnection({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
+    connectionLimit: 10, // Número de conexões simultâneas
     connectTimeout: 10000 
   })
   
@@ -33,6 +34,17 @@ connection.connect((err) => {
       console.log('Conectado ao MySQL com sucesso!');
     }
   });
+
+  // Enviar um "ping" a cada 5 minutos (300000 ms)
+setInterval(() => {
+    connection.ping(err => {
+      if (err) {
+        console.error('Erro ao enviar ping:', err);
+      } else {
+        console.log('Ping enviado com sucesso');
+      }
+    });
+  }, 300000); // 5 minutos
   
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
