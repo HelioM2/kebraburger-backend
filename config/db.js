@@ -21,7 +21,9 @@ const connection = mysql.createConnection({
   host: process.env.DB_HOST, // 'mysql.railway.internal'
   user: process.env.DB_USER, // 'root'
   password: process.env.DB_PASSWORD, // Sua senha
-  database: process.env.DB_NAME // 'kebra_burger'
+  database: process.env.DB_NAME, // 'kebra_burger'
+  port: process.env.DB_PORT, // Certifique-se de incluir a porta
+  connectTimeout: 30000 // Aumentando o tempo de espera para a conexão
 });
 
 // Conectar ao banco de dados
