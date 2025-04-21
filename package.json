@@ -2,6 +2,7 @@
   "name": "servidorKebraBurger",
   "version": "1.0.0",
   "scripts": {
+    "dev": "nodemon server.js",
     "start": "node server.js"
   },
   "dependencies": {
@@ -19,5 +20,8 @@
     "assets": [
       "uploads/**/*"
     ]
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
